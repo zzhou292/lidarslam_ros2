@@ -90,7 +90,7 @@ private:
     std::string robot_frame_id_;
     std::string odom_frame_id_;
 
-    pcl::Registration < pcl::PointXYZI, pcl::PointXYZI > ::Ptr registration_;
+    boost::shared_ptr<pcl::Registration<pcl::PointXYZI, pcl::PointXYZI>> registration_;
 
     rclcpp::Subscription < geometry_msgs::msg::PoseStamped > ::SharedPtr initial_pose_sub_;
     rclcpp::Subscription < sensor_msgs::msg::Imu > ::SharedPtr imu_sub_;
