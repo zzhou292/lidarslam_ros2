@@ -16,15 +16,15 @@ scan_matcher:
     map_publish_period: 15.0
     num_targeted_cloud: 20
     set_initial_pose: true
-    initial_pose_x: 0.0
+    initial_pose_x: 0.3
     initial_pose_y: 0.0
-    initial_pose_z: 0.0
+    initial_pose_z: 1.0
     initial_pose_qx: 0.0
     initial_pose_qy: 0.0
     initial_pose_qz: 0.0
     initial_pose_qw: 1.0
     use_imu: false
-    use_odom: true
+    use_odom: false
     debug_flag: false
 
 graph_based_slam:
