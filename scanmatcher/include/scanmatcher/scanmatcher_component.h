@@ -172,6 +172,8 @@ private:
     double scan_period_ {0.1};
     LidarUndistortion lidar_undistortion_;
 
+    int cpu_id;
+
   };
 }
 

@@ -79,6 +79,11 @@ ScanMatcherComponent::ScanMatcherComponent(const rclcpp::NodeOptions & options)
   declare_parameter("debug_flag", false);
   get_parameter("debug_flag", debug_flag_);
 
+  // int cpu_id;
+  declare_parameter("cpu_id", 0);  // Default value is 0
+  get_parameter("cpu_id", cpu_id);
+
+
   std::cout << "registration_method:" << registration_method_ << std::endl;
   std::cout << "ndt_resolution[m]:" << ndt_resolution << std::endl;
   std::cout << "ndt_num_threads:" << ndt_num_threads << std::endl;
@@ -270,8 +275,10 @@ void ScanMatcherComponent::initializePubSub()
     "input_cloud", rclcpp::SensorDataQoS(), cloud_callback);
 
   // pub
+  std::string topic_name_pose = "current_pose_" + std::to_string(cpu_id);
+  // RCLCPP_INFO(get_logger(), topic_name_pose);
   pose_pub_ = create_publisher<geometry_msgs::msg::PoseStamped>(
-    "current_pose",
+    topic_name_pose,
     rclcpp::QoS(10));
   map_pub_ = create_publisher<sensor_msgs::msg::PointCloud2>("map", rclcpp::QoS(10));
   map_array_pub_ =
